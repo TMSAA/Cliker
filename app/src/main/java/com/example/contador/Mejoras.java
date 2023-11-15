@@ -16,12 +16,9 @@ import java.util.Locale;
 public class Mejoras extends AppCompatActivity {
 
     private TextView contador;
-    private Handler handler;
-    private Runnable autoIncrement;
     private Button boton;
     private Button boton2;
-    private Handler autoIncrementHandler = new Handler(Looper.getMainLooper());
-    private Runnable autoIncrementRunnable;
+    private Handler autoIncrementHandler;
     private int autoIncrementValuePerSecond = 0;
 
 
@@ -34,7 +31,7 @@ public class Mejoras extends AppCompatActivity {
     double miles;
     double billones;
 
-    @SuppressLint("MissingInflatedId")
+    @SuppressLint({"MissingInflatedId", "SetTextI18n"})
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -42,6 +39,7 @@ public class Mejoras extends AppCompatActivity {
         contador = (TextView) findViewById(R.id.textView2);
         boton = findViewById(R.id.button7);
         boton2 = findViewById(R.id.button2);
+        autoIncrementHandler = new Handler(Looper.getMainLooper());
         numRecibido = getIntent().getDoubleExtra("Num", 0.0);
         sumaRecibido = getIntent().getDoubleExtra("Suma", 0.0);
         costeResta = getIntent().getDoubleExtra("CosteResta", 0.0);
@@ -65,6 +63,7 @@ public class Mejoras extends AppCompatActivity {
         finish();
     }
 
+    @SuppressLint("SetTextI18n")
     public void restar(View v){
         if (numRecibido>=costeResta) {
             numRecibido -= costeResta;
@@ -75,6 +74,7 @@ public class Mejoras extends AppCompatActivity {
         }
     }
 
+    @SuppressLint("SetTextI18n")
     public void comprarAutomatico(View v) {
         if(numRecibido >=  costeAutomatico) {
             numRecibido -= costeAutomatico;
@@ -85,7 +85,7 @@ public class Mejoras extends AppCompatActivity {
     }
 
     public void automatico(){
-        autoIncrementRunnable = new Runnable() {
+        Runnable autoIncrementRunnable = new Runnable() {
             @Override
             public void run() {
                 numRecibido += autoIncrementValuePerSecond;

@@ -2,6 +2,7 @@ package com.example.contador;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
@@ -12,10 +13,6 @@ import android.view.animation.Animation;
 import android.view.animation.ScaleAnimation;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.IntentFilter;
-
 import java.util.Locale;
 
 public class MainActivity extends AppCompatActivity {
@@ -32,8 +29,7 @@ public class MainActivity extends AppCompatActivity {
     double miles;
     double billones;
 
-    private Handler autoIncrementHandler = new Handler(Looper.getMainLooper());
-    private Runnable autoIncrementRunnable;
+    private Handler autoIncrementHandler;
     private int autoIncrementValuePerSecond;
 
 
@@ -44,8 +40,9 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        contador = (TextView) findViewById(R.id.textocontador);
-        imagen = (ImageView) findViewById(R.id.imageView);
+        contador = findViewById(R.id.textocontador);
+        imagen = findViewById(R.id.imageView);
+        autoIncrementHandler = new Handler(Looper.getMainLooper());
         valorDelContador = getIntent().getDoubleExtra("contador", 0.0);
         suma = getIntent().getDoubleExtra("sumarvuelta", suma);
         costeRestaM = getIntent().getDoubleExtra("CosteResta", costeRestaM);
@@ -68,7 +65,7 @@ public class MainActivity extends AppCompatActivity {
 
 
     public void atras(View v){
-        Intent i = new Intent(this, Pantallainicio.class);
+        new Intent(this, Pantallainicio.class);
         finish();
     }
 
@@ -84,7 +81,7 @@ public class MainActivity extends AppCompatActivity {
    }
 
     public void automatico(){
-        autoIncrementRunnable = new Runnable() {
+        Runnable autoIncrementRunnable = new Runnable() {
             @Override
             public void run() {
                 num += autoIncrementValuePerSecond;
