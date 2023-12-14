@@ -13,6 +13,27 @@
         android:theme="@style/Theme.Contador"
         tools:targetApi="31">
         <activity
+            android:name=".ScoreDatabaseManager"
+            android:exported="false" />
+        <activity
+            android:name=".JugadorAdapter"
+            android:exported="false" />
+        <activity
+            android:name=".JugadorVierHolder"
+            android:exported="false" />
+        <activity
+            android:name=".Jugador"
+            android:exported="false" />
+        <activity
+            android:name=".Entrada"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
             android:name=".Mejoras"
             android:exported="false" />
         <activity
@@ -23,13 +44,7 @@
             android:exported="false" />
         <activity
             android:name=".Pantallainicio"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+            android:exported="true" />
         <activity
             android:name=".MainActivity"
             android:exported="true" />

@@ -36,7 +36,7 @@ public class Mejoras extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mejoras);
-        contador = (TextView) findViewById(R.id.textView2);
+        contador = findViewById(R.id.textView2);
         boton = findViewById(R.id.button7);
         boton2 = findViewById(R.id.button2);
         autoIncrementHandler = new Handler(Looper.getMainLooper());
